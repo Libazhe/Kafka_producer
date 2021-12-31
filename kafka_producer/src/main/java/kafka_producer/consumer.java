@@ -7,6 +7,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import java.util.Arrays;
 import java.util.Properties;
 
+//consumer
 public class consumer {
     public static void main(String[] args) throws InterruptedException{
         if (!args[1].equals("--brokers"))
