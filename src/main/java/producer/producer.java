@@ -1,4 +1,4 @@
-package kafka_producer;
+package producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -6,12 +6,11 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.*;
 
-//producer
 public class producer {
     public static void main(String[] args) throws InterruptedException{
-	if (!args[1].equals("--brokers"))
-	    throw new IllegalArgumentException("Wrong argument: " + args[1]);
-	int k = 2;
+	if (!args[0].equals("--brokers"))
+	    throw new IllegalArgumentException("Wrong argument: " + args[0]);
+	int k = 1;
 	String brokers = args[k];
 	if (!args[k+1].equals("--topic"))
 		throw new IllegalArgumentException("Wrong argument: " + args[k+1]);
@@ -30,7 +29,7 @@ public class producer {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         KafkaProducer<String,String> producer = new KafkaProducer<String,String>(props);
-	for (int j=0; j< record_numbers; ++j)
+	for (int j=0; j< record_numbers; ++j)  //produce record_numbers of records
 	{
              String key = "key-"+Integer.toString(j);
 	     String value = "value-"+Integer.toString(j);
